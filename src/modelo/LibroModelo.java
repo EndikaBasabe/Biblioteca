@@ -38,7 +38,26 @@ public class LibroModelo extends Conector {
 		}
 		return null;
 	}
-
+	
+	public ArrayList<Libro> seleccionarLibros(int min, int max){
+	
+		ArrayList<Libro> libros = new ArrayList<Libro>();
+		Statement st;
+		try {
+			st = this.conexion.createStatement();
+			ResultSet rs = st.executeQuery("select * from libros where num_pag > " +min  +" and num_pag < "+ max);
+			while(rs.next()){
+				libros.add(new Libro(rs.getInt("id"),rs.getString("titulo"),rs.getString("autor"),rs.getInt("num_pag")));
+			}
+		} catch (SQLException e) {
+			// TODO Bloque catch generado automáticamente
+			e.printStackTrace();
+		}
+		return libros;
+		
+		
+	
+}
 	public ArrayList<Libro> select(String autor) {
 		ArrayList<Libro> libros = new ArrayList<Libro>();
 		try {

@@ -104,4 +104,10 @@ public class ControladorLibro {
 		
 	}
 
+	public void rellenarPorPaginas(int min, int max) {
+		ArrayList<Libro>libros = this.libroModelo.seleccionarLibros(min,max);
+		this.consultaLibro.llenarTabla(libros);
+		
+	}
+
 }
