@@ -6,8 +6,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import controlador.ControladorPrestamo;
+
 public class LibroModelo extends Conector {
 
+	private ControladorPrestamo controladorPrestamo;
+	
 	public ArrayList<Libro> select() {
 		ArrayList<Libro> libros = new ArrayList<Libro>();
 		try {
@@ -148,4 +152,13 @@ public class LibroModelo extends Conector {
 
 	}
 
+	public ControladorPrestamo getControladorPrestamo() {
+		return controladorPrestamo;
+	}
+
+	public void setControladorPrestamo(ControladorPrestamo controladorPrestamo) {
+		this.controladorPrestamo = controladorPrestamo;
+	}
+
+	
 }

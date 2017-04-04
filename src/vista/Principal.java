@@ -26,6 +26,7 @@ public class Principal extends JFrame {
 	private JPanel contentPane;
 	private ControladorSocio controladorSocio;
 	private ControladorLibro controladorLibro;
+	private ControladorPrestamo controladorPrestamo;
 	
 	// Getters y setters
 	public ControladorSocio getControladorSocio() {
@@ -42,6 +43,14 @@ public class Principal extends JFrame {
 
 	public void setControladorLibro(ControladorLibro controladorLibro) {
 		this.controladorLibro = controladorLibro;
+	}
+
+	public ControladorPrestamo getControladorPrestamo() {
+		return controladorPrestamo;
+	}
+
+	public void setControladorPrestamo(ControladorPrestamo controladorPrestamo) {
+		this.controladorPrestamo = controladorPrestamo;
 	}
 
 	// Constructor
@@ -70,7 +79,12 @@ public class Principal extends JFrame {
 			}
 		});
 		
-		JButton botonPrestamos = new JButton("PRESTAMOS");
+		JButton botonPrestamos = new JButton("GESTION PRESTAMOS");
+		botonPrestamos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controladorPrestamo.abrirVentanaGestionPrestamo();
+			}
+		});
 		
 		JLabel labelBiblioteca = new JLabel("BIBLIOTECA");
 		labelBiblioteca.setToolTipText("");
@@ -90,9 +104,9 @@ public class Principal extends JFrame {
 							.addContainerGap()
 							.addComponent(botonGestionSocios))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(22)
+							.addContainerGap()
 							.addComponent(botonPrestamos)))
-					.addGap(14)
+					.addGap(26)
 					.addComponent(labelIcon, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
@@ -101,13 +115,13 @@ public class Principal extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(31)
 					.addComponent(labelBiblioteca, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
 					.addComponent(botonGestionLibros)
 					.addGap(31)
 					.addComponent(botonGestionSocios)
-					.addGap(28)
+					.addGap(26)
 					.addComponent(botonPrestamos)
-					.addGap(24))
+					.addGap(19))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(labelIcon, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

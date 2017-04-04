@@ -8,9 +8,13 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import controlador.ControladorPrestamo;
+
 public class PrestamoModelo extends Conector {
 
 
+	private ControladorPrestamo controladorPrestamo;
+	
 	public ArrayList<Prestamo> select() {
 		ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
 		try {
@@ -95,4 +99,15 @@ public class PrestamoModelo extends Conector {
 		}
 	}
 
+
+	public ControladorPrestamo getControladorPrestamo() {
+		return controladorPrestamo;
+	}
+
+
+	public void setControladorPrestamo(ControladorPrestamo controladorPrestamo) {
+		this.controladorPrestamo = controladorPrestamo;
+	}
+
+	
 }

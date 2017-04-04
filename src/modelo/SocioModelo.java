@@ -1,4 +1,5 @@
 package modelo;
+import controlador.ControladorPrestamo;
 import controlador.ControladorSocio;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ public class SocioModelo extends Conector {
 		this.controladorSocio = controladorSocio;
 	}
 
+	private ControladorPrestamo controladorPrestamo;
 	
 	public Socio select(int id) {
 		try {
@@ -111,4 +113,13 @@ public class SocioModelo extends Conector {
 
 	}
 
+	public ControladorPrestamo getControladorPrestamo() {
+		return controladorPrestamo;
+	}
+
+	public void setControladorPrestamo(ControladorPrestamo controladorPrestamo) {
+		this.controladorPrestamo = controladorPrestamo;
+	}
+
+	
 }

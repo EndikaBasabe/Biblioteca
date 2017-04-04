@@ -9,9 +9,11 @@ public class Main {
 		//Crear controladores
 		ControladorSocio controladorSocio = new ControladorSocio();
 		ControladorLibro controladorLibro = new ControladorLibro();
+		ControladorPrestamo controladorPrestamo = new ControladorPrestamo();
 		//Crear modelos
 		SocioModelo socioModelo = new SocioModelo();
 		LibroModelo libroModelo = new LibroModelo();
+		PrestamoModelo prestamoModelo = new PrestamoModelo();
 		
 		//Crear ventanas
 		Principal principal = new Principal();
@@ -25,8 +27,13 @@ public class Main {
 		FormularioLibro formularioLibro = new FormularioLibro(gestionLibro,true);
 		ConsultaLibro consultaLibro = new ConsultaLibro(gestionLibro,true);
 		
-		principal.setControladorSocio(controladorSocio);
+		GestionPrestamo gestionPrestamo = new GestionPrestamo(principal,true);
+		RealizarPrestamo realizarPrestamo = new RealizarPrestamo(gestionPrestamo,true);
+		
+		
 	
+		//Asignar el controlador a las ventanas.
+		principal.setControladorSocio(controladorSocio);
 		gestionSocio.setControladorSocio(controladorSocio);
 		formularioSocio.setControladorSocio(controladorSocio);
 		eliminarSocio.setControladorSocio(controladorSocio);
@@ -36,6 +43,11 @@ public class Main {
 		gestionLibro.setControladorLibro(controladorLibro);
 		formularioLibro.setControladorLibro(controladorLibro);
 		consultaLibro.setControladorLibro(controladorLibro);
+		
+		gestionPrestamo.setControladorPrestamo(controladorPrestamo);
+		realizarPrestamo.setControladorPrestamo(controladorPrestamo);
+		principal.setControladorPrestamo(controladorPrestamo);
+		
 		
 		//Asignar ventanas y modelos al controlador
 		controladorSocio.setPrincipal(principal);
@@ -51,8 +63,14 @@ public class Main {
 		controladorLibro.setFormularioLibro(formularioLibro);
 		controladorLibro.setConsultaLibro(consultaLibro);
 		
+		controladorPrestamo.setGestionPrestamo(gestionPrestamo);
+		controladorPrestamo.setPrestamoModelo(prestamoModelo);
+		controladorPrestamo.setPrincipal(principal);
+		controladorPrestamo.setRealizarPrestamo(realizarPrestamo);
+		controladorPrestamo.setSocioModelo(socioModelo);
+		controladorPrestamo.setLibroModelo(libroModelo);
 	
-		
 		principal.setVisible(true);
 	}
 }
+
