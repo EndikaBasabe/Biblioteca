@@ -12,11 +12,16 @@ import controlador.ControladorPrestamo;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RealizarPrestamo extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private ControladorPrestamo controladorPrestamo;
+	private JTextField textFieldIdSocio;
+	private JTextField textFieldLibro;
 
 	/**
 	 * Create the dialog.
@@ -35,7 +40,7 @@ public class RealizarPrestamo extends JDialog {
 			contentPanel.add(lblRealizarPrestamo);
 		}
 		{
-			JLabel lblSocios = new JLabel("Socios :");
+			JLabel lblSocios = new JLabel("ID socio :");
 			lblSocios.setBounds(50, 78, 46, 14);
 			contentPanel.add(lblSocios);
 		}
@@ -45,17 +50,24 @@ public class RealizarPrestamo extends JDialog {
 			contentPanel.add(lblLibros);
 		}
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(121, 75, 102, 20);
-		contentPanel.add(comboBox);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(121, 146, 102, 20);
-		contentPanel.add(comboBox_1);
-		
 		JButton buttonOk = new JButton("OK");
+		buttonOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPrestamo.realizarPrestamo(Integer.parseInt(textFieldIdSocio.getText()),textFieldLibro.getText());
+			}
+		});
 		buttonOk.setBounds(290, 215, 89, 23);
 		contentPanel.add(buttonOk);
+		
+		textFieldIdSocio = new JTextField();
+		textFieldIdSocio.setBounds(128, 75, 86, 20);
+		contentPanel.add(textFieldIdSocio);
+		textFieldIdSocio.setColumns(10);
+		
+		textFieldLibro = new JTextField();
+		textFieldLibro.setBounds(128, 146, 86, 20);
+		contentPanel.add(textFieldLibro);
+		textFieldLibro.setColumns(10);
 	}
 
 	public ControladorPrestamo getControladorPrestamo() {

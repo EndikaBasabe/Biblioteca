@@ -1,5 +1,6 @@
 package controlador;
 
+import modelo.Libro;
 import modelo.LibroModelo;
 import modelo.PrestamoModelo;
 import modelo.SocioModelo;
@@ -60,5 +61,14 @@ public class ControladorPrestamo {
 		this.realizarPrestamo.setVisible(true);
 		
 	}
-	
+	public void realizarPrestamo(int idSocio, String titulo) {
+		Libro libro = this.libroModelo.libroPorTitulo(titulo);
+		//prestamo objetua sortu
+		
+		//prestamo objetua bete
+		
+		//prestamo modelori esan insert egiteko prestamoa pasata.
+		
+	}
+
 }

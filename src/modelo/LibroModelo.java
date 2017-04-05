@@ -80,6 +80,31 @@ public class LibroModelo extends Conector {
 		return libros;
 
 	}
+	
+	public Libro libroPorTitulo(String titulo) {
+	
+			try {
+				PreparedStatement ps = this.conexion
+						.prepareStatement("select * from libros where titulo = ? ");
+				ps.setString(1,titulo);
+				
+				ResultSet rs = ps.executeQuery();
+
+				while(rs.next()){
+					Libro libro = new Libro();
+					libro.setId(rs.getInt("id"));
+					libro.setTitulo(rs.getString("titulo"));
+					libro.setAutor(rs.getString("autor"));
+					libro.setNum_pag(rs.getInt("num_pag"));
+					
+					return libro;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+		}
 
 	public ArrayList<String> selectAutores() {
 		Statement st;
