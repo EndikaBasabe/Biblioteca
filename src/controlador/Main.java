@@ -29,6 +29,7 @@ public class Main {
 		
 		GestionPrestamo gestionPrestamo = new GestionPrestamo(principal,true);
 		RealizarPrestamo realizarPrestamo = new RealizarPrestamo(gestionPrestamo,true);
+		ConsultaPrestamo consultaPrestamo = new ConsultaPrestamo(gestionPrestamo,true);
 		
 		
 	
@@ -47,6 +48,7 @@ public class Main {
 		gestionPrestamo.setControladorPrestamo(controladorPrestamo);
 		realizarPrestamo.setControladorPrestamo(controladorPrestamo);
 		principal.setControladorPrestamo(controladorPrestamo);
+		consultaPrestamo.setControladorPrestamo(controladorPrestamo);
 		
 		
 		//Asignar ventanas y modelos al controlador
@@ -69,6 +71,7 @@ public class Main {
 		controladorPrestamo.setRealizarPrestamo(realizarPrestamo);
 		controladorPrestamo.setSocioModelo(socioModelo);
 		controladorPrestamo.setLibroModelo(libroModelo);
+		controladorPrestamo.setConsultaPrestamo(consultaPrestamo);
 	
 		principal.setVisible(true);
 	}

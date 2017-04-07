@@ -7,10 +7,12 @@ public class Prestamo {
 	
 	//-----Atributos
 	
-	int id_libro;
-	int id_socio;
-	Date fecha;
-	boolean devuelto;
+	private int id_libro;
+	private int id_socio;
+	private Date fecha;
+	private boolean devuelto;
+	private Libro libro;
+	private Socio socio;
 
 	//-----Constructores
 	
@@ -76,6 +78,22 @@ public class Prestamo {
 
 	public void setDevuelto(boolean devuelto) {
 		this.devuelto = devuelto;
+	}
+
+	public Libro getLibro() {
+		return libro;
+	}
+
+	public void setLibro(Libro libro) {
+		this.libro = libro;
+	}
+
+	public Socio getSocio() {
+		return socio;
+	}
+
+	public void setSocio(Socio socio) {
+		this.socio = socio;
 	}
 
 }

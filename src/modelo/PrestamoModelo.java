@@ -36,6 +36,7 @@ public class PrestamoModelo extends Conector {
 	}
 
 
+
 	public Prestamo select(int id_libro, int id_socio, java.util.Date fecha) {
 		try {
 			SimpleDateFormat eus_format = new SimpleDateFormat("yyyy-MM-dd");
@@ -107,6 +108,54 @@ public class PrestamoModelo extends Conector {
 
 	public void setControladorPrestamo(ControladorPrestamo controladorPrestamo) {
 		this.controladorPrestamo = controladorPrestamo;
+	}
+
+
+
+	public ArrayList<Prestamo> selectPrestamosDeSocio(int idSocio) {
+		
+		try{
+			PreparedStatement pst;
+			pst = this.conexion.prepareStatement("select libros.*,prestamos.*, from prestamos join libros on prestamos.id_libro = libros.id where prestamos.idSocio = ?");
+			
+			pst.setInt(1, idSocio);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()){
+				ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+				
+				Libro libro = new Libro();
+				libro.setTitulo(rs.getString("titulo"));
+				libro.setAutor(rs.getString("autor"));
+				libro.setNum_pag(rs.getInt("num_pag"));
+				
+				Socio socio = new Socio();
+				
+				socio.setNombre(rs.getString("nombre"));
+				socio.setApellido(rs.getString("apellido"));
+				socio.setDireccion(rs.getString("direccion"));
+				socio.setPoblacion(rs.getString("poblacion"));
+				socio.setProvincia(rs.getString("provincia"));
+				socio.setDni(rs.getString("dni"));
+				
+				Prestamo prestamo = new Prestamo();
+				
+				prestamo.setFecha(rs.getDate("fecha"));
+				prestamo.setDevuelto(rs.getBoolean("devuelto"));
+				prestamo.setLibro(libro);
+				prestamo.setSocio(socio);
+				
+				prestamos.add(prestamo);
+				
+				return prestamos;
+			}
+		
+		}catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	

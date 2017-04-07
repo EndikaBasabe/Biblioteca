@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Libro {
 	
 	//-----Atributos
@@ -8,6 +10,7 @@ public class Libro {
 	private String titulo;
 	private String autor;
 	private int num_pag;
+	private ArrayList<Prestamo> prestamos;
 	
 	//-----Constructores
 	

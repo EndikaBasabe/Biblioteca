@@ -44,8 +44,17 @@ public class GestionPrestamo extends JDialog {
 				controladorPrestamo.abrirVentanaRealizarPrestamo();
 			}
 		});
-		buttonRealizarPrestamo.setBounds(151, 79, 146, 23);
+		buttonRealizarPrestamo.setBounds(151, 92, 171, 23);
 		getContentPane().add(buttonRealizarPrestamo);
+		
+		JButton btnConsultaDePrestamos = new JButton("Consulta de prestamos");
+		btnConsultaDePrestamos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPrestamo.abrirConsultaPrestamo();
+			}
+		});
+		btnConsultaDePrestamos.setBounds(151, 150, 171, 23);
+		getContentPane().add(btnConsultaDePrestamos);
 	}
 	public ControladorPrestamo getControladorPrestamo() {
 		return controladorPrestamo;
